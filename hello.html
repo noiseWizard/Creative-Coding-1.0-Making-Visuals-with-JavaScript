@@ -1,0 +1,36 @@
+<html>
+	<body>
+		<canvas width="600" height="600"></canvas>
+
+		<script>
+  
+            let year = 2042;
+            let nextYear = year + 1;
+
+            let dinner = "pasta";
+            let sentence = "tonight, dinner will be " + dinner;
+
+            function saySomething(param) {
+                console.log(param);
+            }
+
+            saySomething(sentence);
+
+            function add(a, b) {// defines the function 'add' as having two parameters
+                //a + b; //this is kept for future reference only, by only having this, it will add them together but not show the outcome. the outcome is shown if 'return' is used (see below)
+                return a + b;// shows what happens when you add the two parameters together 
+            }
+
+            let result = add(5, 7); //variables don't have to be defined before console log, see below for an example
+            console.log(result);
+
+            //this is another way of defining funtions, this one multiplies instead of adds
+            let mutiply = (a, b) => {
+                return a * b;
+            }
+
+            console.log(mutiply(5,7)) //this is the example where the result variable did not have to be defined prior
+
+		</script>
+	</body>
+</html>
