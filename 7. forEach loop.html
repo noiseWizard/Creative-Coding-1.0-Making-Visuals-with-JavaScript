@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html type="en">
+
+<body>
+    <h1>for each loop</h1>
+    <canvas id="condSquares" width="600" height="600" style="border:1px solid black;"></canvas>
+</body>
+
+<script>
+
+    let condSquares = document.getElementById("condSquares");
+    let condContext = condSquares.getContext("2d");
+    let condWidth = condContext.lineWidth = 4;
+
+
+    const width = 60;
+    const height = 60;
+    const gap = 20;
+    let x, y;
+
+    for (i = 0; i < 5; i++) {
+
+        for (j = 0; j < 5; j++) {
+
+            x = 100 + (width + gap) * i;
+            y = 100 + (width + gap) * j;
+
+            condContext.beginPath();
+            condContext.rect(x, y, width, height)
+            condContext.stroke();
+
+            if (Math.random() > 0.5) {
+                condContext.beginPath();
+                condContext.rect(x + 8, y + 8, width - 16, height - 16);
+                condContext.stroke();
+            }
+        }
+
+    }
+
+    let menu = ["starter", "main", "dessert", "drinks", "sides"];
+
+    menu.forEach(item => {
+        console.log(item);
+    });
+    //NOTE THIS HAS A WEIRD SETUP OF THE BRACKETS
+
+
+</script>
+
+</html>

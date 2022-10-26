@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>rows of squares</h1>
+    <canvas id="rowSquares" width="600" height="600" style="border:1px solid #000000;"></canvas>
+
+    <p>multiple rows can be created using nested loops:</p>
+    <pre>
+        <code>
+    for (i = 0; i < 5; i++) {
+
+        for (j = 0; j < 5; j++) {
+            let width = 60;
+            let height = 60;
+            let gap = 20;
+            let x = 100 + (width + gap) * i;
+            let y = 100 + (width + gap) * j;
+
+            rowContext.beginPath();
+            rowContext.rect(x, y, width, height)
+            rowContext.stroke();
+        }
+
+    }
+        </code>
+    </pre>
+    <p>traditionally, if a second index is needed in a loop, the letter j is used</p>
+
+    <h1>squares in squares</h1>
+    <canvas id="squaresInSquares" width="600" height="600" style="border:1px solid #000000;"></canvas>
+
+    <p>and squares can be drawn in squares:</p>
+    <pre>
+        <code>
+    for (i = 0; i < 5; i++) {
+
+        for (j = 0; j < 5; j++) {
+            let width = 60;
+            let height = 60;
+            let gap = 20;
+            let x = 100 + (width + gap) * i;
+            let y = 100 + (width + gap) * j;
+
+            squaresInContext.beginPath();
+            squaresInContext.rect(x, y, width, height)
+            squaresInContext.stroke();
+
+            squaresInContext.beginPath();
+            squaresInContext.rect(x + 8, y + 8, width - 16, height - 16);
+            squaresInContext.stroke();
+        }
+
+    }
+        </code>
+    </pre>
+
+    <script>
+
+        let rowSquares = document.getElementById("rowSquares");
+        let rowContext = rowSquares.getContext("2d");
+        let rowWidth = rowContext.lineWidth = 4;
+
+        for (i = 0; i < 5; i++) {
+
+            for (j = 0; j < 5; j++) {
+                let width = 60;
+                let height = 60;
+                let gap = 20;
+                let x = 100 + (width + gap) * i;
+                let y = 100 + (width + gap) * j;
+
+                rowContext.beginPath();
+                rowContext.rect(x, y, width, height)
+                rowContext.stroke();
+
+                rowContext.beginPath();
+                rowContext.rect(x + 8, y + 8, width - 16, height - 16);
+                rowContext.stroke();
+            }
+
+        }
+
+        let squaresInSquares = document.getElementById("squaresInSquares");
+        let squaresInContext = squaresInSquares.getContext("2d");
+        let squaresInWidth = squaresInContext.lineWidth = 4;
+
+        for (i = 0; i < 5; i++) {
+
+            for (j = 0; j < 5; j++) {
+                let width = 60;
+                let height = 60;
+                let gap = 20;
+                let x = 100 + (width + gap) * i;
+                let y = 100 + (width + gap) * j;
+
+                squaresInContext.beginPath();
+                squaresInContext.rect(x, y, width, height)
+                squaresInContext.stroke();
+
+                squaresInContext.beginPath();
+                squaresInContext.rect(x + 8, y + 8, width - 16, height - 16);
+                squaresInContext.stroke();
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

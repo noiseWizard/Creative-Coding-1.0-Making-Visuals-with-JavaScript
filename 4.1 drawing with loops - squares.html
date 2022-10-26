@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>drawing with loops</h1>
+    <canvas id="squishedSquares" width="200" height="200" style="border:1px solid #000000;"></canvas>
+    <p>this loop draws five squares, but it only shows one because it is drawing the squares on top of each other.<br>
+        we need to change something so each time the loop runs, something changes (I am going to guess the first or
+        second value in context.rect)</p>
+    <h4>the loop code:</h4>
+    <pre>
+        <code>    
+    for (let i = 0; i < 5; i++) {
+        squishedContext.beginPath();
+        squishedContext.rect(100, 100, 60, 60);
+        // context.rect(x location, y location, width, height);
+        squishedContext.stroke();
+    }
+        </code>
+    </pre>
+
+    <canvas id="parallelSquares" width="600" height="200" style="border:1px solid #000000;"></canvas>
+    <p>this loop draws five squares in a row because the loop increases the horizontal starting position with each run
+        of the loop</p>
+    <h4>the loop code:</h4>
+    <pre>
+        <code>
+    for (let i = 0; i < 5; i++) {
+        parallelContext.beginPath();
+        parallelContext.rect(100 + 60 * i, 100, 60, 60);
+        parallelContext.stroke();
+    }
+        </code>
+    </pre>
+    <pre>
+        <code>
+        the 100 + 60 * i means:
+        horizontal draw location + (move amount * current value of i)
+        for each of the five, the location value would be
+            100 = 100 + (60 * 1) (it's not starting at 160 because the box is drawn from top left and the box size is 60)
+            100 = 100 + (60 * 2)
+            100 = 100 + (60 * 3)
+            100 = 100 + (60 * 4)
+            100 = 100 + (60 * 5)
+        </code>
+    </pre>
+
+    <canvas id="variableSquares" width="600" height="200" style="border:1px solid #000000;"></canvas>
+    <p>this loop draws five squares with 20 gap between them, if the width of the boxes changes, the gap remains
+        persistent at 20</p>
+    <h4>the loop code:</h4>
+    <pre>
+        <code>
+        let variableSquares = document.getElementById("variableSquares");
+        let variableContext = variableSquares.getContext("2d");
+        let variableWidth = variableContext.lineWidth = 4;
+
+        for (let i = 0; i < 5; i++) {
+            let width = 60;
+            let height = 60;
+            let gap = 20;
+            let x = 100 + (width + gap) * i;
+            let y = 100;
+
+            variableContext.beginPath();
+            variableContext.rect(x, y, width, height);
+            variableContext.stroke();
+        }
+        </code>
+    </pre>
+
+    <script>
+
+        let squishedSquares = document.getElementById("squishedSquares");
+        let squishedContext = squishedSquares.getContext("2d");
+        let squishedWidth = squishedContext.lineWidth = 4;
+        //selects where the drawing will be, it will have a width of 4 and saying it is 2D
+        //note: I could just have 'context.lineWidth = 4;' but by setting it as a variable,
+        //I can change the width of the line later on
+
+        for (let i = 0; i < 5; i++) {
+            squishedContext.beginPath();
+            squishedContext.rect(100, 100, 60, 60);
+            // context.rect(x location, y location, width, height);
+            squishedContext.stroke();
+        }
+        //this loop draws five squares, but it only shows one because it is drawing the squares on top of each other.
+        //we need to change something so each time the loop runs, something changes (I am going to guess the first or second value in context.rect)
+
+        let parallelSquares = document.getElementById("parallelSquares");
+        let parallelContext = parallelSquares.getContext("2d");
+        let parrallelWidth = parallelContext.lineWidth = 4;
+
+        for (let i = 0; i < 5; i++) {
+            parallelContext.beginPath();
+            parallelContext.rect(100 + 60 * i, 100, 60, 60);
+            // the 100 + 60 * i means:
+            // horizontal draw location + (move amount * current value of i)
+            // for each of the five, the location value would be
+            // 100 = 100 + (60 * 1) (it's not starting at 160 because the box is drawn from top left and the box size is 60)
+            // 100 = 100 + (60 * 2)
+            // 100 = 100 + (60 * 3)
+            // 100 = 100 + (60 * 4)
+            // 100 = 100 + (60 * 5)
+            parallelContext.stroke();
+        }
+
+        let variableSquares = document.getElementById("variableSquares");
+        let variableContext = variableSquares.getContext("2d");
+        let variableWidth = variableContext.lineWidth = 4;
+
+        for (let i = 0; i < 5; i++) {
+            let width = 60;
+            let height = 60;
+            let gap = 20;
+            let x = 100 + (width + gap) * i;
+            let y = 100;
+
+            variableContext.beginPath();
+            variableContext.rect(x, y, width, height);
+            variableContext.stroke();
+        }
+
+    </script>
+</body>
+
+</html>

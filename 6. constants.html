@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html type="en">
+
+<body>
+    <h1>constants</h1>
+    <canvas id="condSquares" width="600" height="600" style="border:1px solid black;"></canvas>
+</body>
+
+<script>
+
+    let condSquares = document.getElementById("condSquares");
+    let condContext = condSquares.getContext("2d");
+    let condWidth = condContext.lineWidth = 4;
+
+    //variables can also be delcared using const for values which will not change
+    const gravity = 9.81; //this is an example of a const because gravity on earth doesn't change
+    let velocity = 0.0; //this is an example of a variable because velocity can change
+    //rule of thumb is to use const unless you know the value is going to change (then use `let`)
+
+    const width = 60;
+    const height = 60;
+    const gap = 20;
+    //setting these as constants because in this example, they will not change.
+    let x, y;
+    //because these are variables they can just be declared and then when they're used later on, (check the for loop below) they're just updating
+
+    for (i = 0; i < 5; i++) {
+
+        for (j = 0; j < 5; j++) {
+
+            x = 100 + (width + gap) * i;
+            y = 100 + (width + gap) * j;
+            //keeping x, y as `let` because their values will change
+
+            condContext.beginPath();
+            condContext.rect(x, y, width, height)
+            condContext.stroke();
+
+            if (Math.random() > 0.5) {
+                //this randomises the location of the squares
+                condContext.beginPath();
+                condContext.rect(x + 8, y + 8, width - 16, height - 16);
+                condContext.stroke();
+            }
+        }
+
+    }
+
+
+</script>
+
+</html>

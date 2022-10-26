@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html type="en">
+
+<body>
+    <h1>conditionals</h1>
+    <canvas id="condSquares" width="600" height="600" style="border:1px solid black;"></canvas>
+</body>
+
+<script>
+
+    let condSquares = document.getElementById("condSquares");
+    let condContext = condSquares.getContext("2d");
+    let condWidth = condContext.lineWidth = 4;
+
+    for (i = 0; i < 5; i++) {
+
+        for (j = 0; j < 5; j++) {
+            let width = 60;
+            let height = 60;
+            let gap = 20;
+            let x = 100 + (width + gap) * i;
+            let y = 100 + (width + gap) * j;
+
+            condContext.beginPath();
+            condContext.rect(x, y, width, height)
+            condContext.stroke();
+
+            // if (i > 1 && i < 4){
+            // // && is for AND, there can be multiple ANDs
+            // //in the five by five square, it gives the 2, 3 & 4th boxes a smaller box because the first box counts as 0
+            //     condContext.beginPath();
+            //     condContext.rect(x + 8, y + 8, width - 16, height - 16);
+            //     condContext.stroke();
+            // }
+
+            if (Math.random() > 0.5) {
+                //this randomises the location of the squares
+                condContext.beginPath();
+                condContext.rect(x + 8, y + 8, width - 16, height - 16);
+                condContext.stroke();
+            }
+        }
+
+    }
+
+    //Math.random() //returns random number every time, very useful for generative design
+
+
+</script>
+
+</html>

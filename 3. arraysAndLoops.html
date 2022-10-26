@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>arrays and loops</h1>
+    <p>there are notes in the script part of this. no html today!</p>
+
+    <script>
+
+        let yearsExample = [2040, 2041, 2042];
+        //arrays are like lists and can be identified by the [square brackets] with values separated by commas
+
+        let menu = ["starter", "main", "dessert", "drinks", "sides"];
+        //arrays can also be strings. (strings are a 'string' of values)
+
+        //Loops are chunks of code which run over again and again for a finite number of times set.
+
+        // for (setting the starting counter; duration of loop; what happens at end of loop) {
+        //      ...DO THIS
+        // }
+
+        for (let i = 0; i < 4; i ++) {
+        // for (start the counter at zero; while the counter is less than four; at the end of each loop, increase the counter by one)
+        // ++ is a shorter way of writing =+1
+            console.log(menu[i]);
+        //accessing the items of the above menu array, the i here is linked to the i in the first part of the loop, so if the i at the first part changes, it would here as well.
+            //can confirm this is how it behaves
+        //i'm not sure how Js knows to cycle through each part, but maybe that's part of the syntax for this kind of loop?
+
+        }
+
+        for (let i = 0; i < menu.length; i++) {
+            //in the above for loop, the loop stopped at four because of the i < 4, in this version the loop will continue for however long the menu array is
+            console.log(menu[i]);
+        }
+
+        //loops are not for just reading arrays, loops can also write to arrays
+        let years = [];//sets years to be an empty array
+
+        for (let i = 0; i < 10; i++){
+            years.push(2040 + i);//.push tells the loop to add numbers to a previous array
+        }
+
+        console.log(years);
+
+
+    </script>
+</body>
+
+</html>
