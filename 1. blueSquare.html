@@ -1,0 +1,53 @@
+<html>
+	<body>
+            <h1>blue square</h1>
+		<canvas id="blueSquare" width="600" height="600"></canvas>
+
+		<script>
+            //let canvasVar = document.querySelector("canvas");
+                  //setting the variable canvas to an expression
+                  //[document] part refers to Js object which is this html document
+                  //[.] indicates we want to select something part of that object, in this case a function called querySelector, in this case, selecting an element from the document, being the canvas tag
+                  //additional notes and thoughts:
+                  //- the video also said the variable should be set to 'canvas' because it's easier but I feel weird about having a variable defined as the same name as a element tag. that is a me problem likely. I've set it to canvasVar (sorry) for now so I can understand when I'm calling the element compared to the Js var
+                  //this above code was part of the original video, because I wanted to keep my shapes easy to see, I have created a version grabbing by element ID
+
+            let canvasVar = document.getElementById("blueSquare");
+
+            let context = canvasVar.getContext('2d');
+
+            context.fillStyle = "blue";
+            //this sets the rectangle fill to blue
+            context.fillRect(100, 100, 400, 400);
+            //the size of the canvas is currently 600
+            //the first two 100 are saying "move 100 pixels to the right, 100 pixels down"
+            //second two 400, 400 are saying "draw a rectangle 400 pixels across, and then 400 pixels down"
+            //the fillRect is actually doing three things:
+            //1. creating a new shape
+            //2. drawing a rectangle
+            //3. filling it with colour
+
+            context.lineWidth = 4;
+            //this ^ was explained after the below section and creates a thicker black line around the box
+            //if i wanted the outline of a rectangle then I'd need to write more explicit instructions
+            context.beginPath();
+            //telling context I am drawing a new shape
+            context.rect(100, 100, 400, 400)
+            //telling context the where to draw the shape, inlcuding it's size (same as above)
+            context.stroke();
+            //says to make it an outline
+            //context.fill();
+            //I think this one would make it filled? it's not completed code though
+            //this makes a very faint outline around the shape
+            context.lineWidth = 4;
+
+            //using w3 schools canvas page is useful. apparently.
+            //https://www.w3schools.com/tags/ref_canvas.asp
+
+            context.beginPath();
+            context.arc();
+      
+
+		</script>
+	</body>
+</html>
