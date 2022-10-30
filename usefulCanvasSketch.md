@@ -48,3 +48,45 @@ example:
       const degToRad = (degrees) => {
         return degrees / 180 * Math.PI;
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// AUDIO
+
+the web audio API is required to make this work with canvas sketch
+
+    // Defines an audio variable, sets it's location (local or online), and plays it when the screen is clicked, and paused if the screen is clicked again
+
+        let audio;
+
+        const sketch = () => {
+        audio = document.createElement('audio');
+        audio.src = "audio/archetypePt1.mp3";
+
+        return ({ context, width, height }) => {
+            context.fillStyle = 'white';
+            context.fillRect(0, 0, width, height);
+        };
+        };
+
+        const addListeners = () => {
+        window.addEventListener("mouseup", () => {
+            if (audio.paused) audio.play();
+            else audio.pause();
+        });
+        }
+
+        addListeners();
+        canvasSketch(sketch, settings);
+
+    
