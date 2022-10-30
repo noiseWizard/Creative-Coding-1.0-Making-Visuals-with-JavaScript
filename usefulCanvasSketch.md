@@ -49,16 +49,24 @@ example:
         return degrees / 180 * Math.PI;
       }
 
+// RANDOM WITHIN A RANGE
+const randomRange = (min, max) => {
+    return Math.random() * (max - min) + min;
+}
 
 
 
 
 
+.translate
+// remaps the 0,0 position on the canvas (initially top left of the canvas without this)
+// "The translate() method remaps the (0,0) position on the canvas." - w3 schools
 
 
-
-
-
+//using pre-made utilies
+const math = require("canvas-sketch-util/math");
+const random = require("canvas-sketch-util/random");
+useful for premade functions instead of having to figure everything out
 
 
 // AUDIO
