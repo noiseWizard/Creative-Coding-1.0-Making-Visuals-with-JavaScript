@@ -68,6 +68,9 @@ const math = require("canvas-sketch-util/math");
 const random = require("canvas-sketch-util/random");
 useful for premade functions instead of having to figure everything out
 
+// LIBRARIES
+IF LIBRARIES ARE ADDED TO THE CODE, BE SURE TO STOP THE PROCESS AND START IT AGAIN ON THE TERMINAL LINE
+
 
 // AUDIO
 
