@@ -1,9 +1,3 @@
-// //for video output
-// ensure ffmpeg is installed
-// terminal command: canvas-sketch `filename` --output=output/03 --stream
-// ctrl+shift+S to start exporting frames
-
-
 const canvasSketch = require('canvas-sketch');
 const random = require("canvas-sketch-util/random");
 const math = require("canvas-sketch-util/math");
@@ -51,7 +45,7 @@ const sketch = ({ context, width, height }) => {
     agents.forEach(agent => {
       agent.update();
       agent.draw(context);
-      agent.bounce(width, height);
+      agent.wrap(width, height);
     });
 
   };
@@ -80,9 +74,17 @@ class Agent {
     this.radius = random.range(4, 12);
   }
 
-  bounce(width, height) {
-    if (this.pos.x <= 0 || this.pos.x >= width) this.vel.x *= -1;
-    if (this.pos.y <= 0 || this.pos.x >= height) this.vel.y *= -1;
+  // bounce (width, height) {
+  //   if (this.pos.x <= 0 || this.pos.x >= width) this.vel.x *= -1;
+  //   if (this.pos.y <= 0 || this.pos.x >= height) this.vel.y *= -1;
+  // }
+
+  // checked what other people were doing, and i almost had it correct. I just had to remove the * from the = near the end of the line
+  wrap (width, height) {
+    if (this.pos.x >= width) this.pos.x = 0;
+    if (this.pos.x <= 0) this.pos.x = width;
+    if (this.pos.y > height) this.pos.y = 0;
+    if (this.pos.y < 0) this.pos.y = height;
   }
 
   update() {
