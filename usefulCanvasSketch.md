@@ -100,4 +100,14 @@ the web audio API is required to make this work with canvas sketch
         addListeners();
         canvasSketch(sketch, settings);
 
-    
+
+//OBJECTS VS ARRAYS
+objects are things like context. or settings
+objects have {} and it's properties are separated by ;
+arrays on the other hand use () and ,
+
+
+
+//CLASSES
+classes need a constructor to include all the instructions on what to "construct"
+using `this` means you can define a parameter specific to this class, I'm guessing it means that each version of the class can have it's own version of the same variable?

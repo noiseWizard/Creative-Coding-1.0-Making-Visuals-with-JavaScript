@@ -1,26 +1,51 @@
 const canvasSketch = require('canvas-sketch');
+const random = require("canvas-sketch-util/random");
 
 const settings = {
-  dimensions: [ 1048, 1048 ]
+  dimensions: [1048, 1048]
 };
 
-const sketch = () => {
+const sketch = ({ context, width, height }) => {
+
+  const agents = [];
+
+  for (let i = 0; i < 40; i++) {
+    const x = random.range(0, width);
+    const y = random.range(0, height);
+    agents.push(new Agent(x, y));
+  }
+
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    const point = { x: 800, y: 400};
+    agents.forEach(agent => {
+      agent.draw(context)
+    });
 
-    context.beginPath();
-    context.arc(point.x, point.y, 10, 0, Math.PI * 2);
-    context.fillStyle = "black";
-    context.fill();
   };
 };
 
 canvasSketch(sketch, settings);
 
-//objects are things like context. or settings
-//objects have {} and it's properties are separated by ;
-//arrays on the other hand use () and ,
+class Point {
+  constructor(x, y, radius) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+  }
+}
 
+class Agent {
+  constructor(x, y) {
+    this.pos = new Point(x, y);
+    this.radius = 10;
+  }
+
+  draw(context) {
+    context.beginPath();
+    context.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+    context.fillStyle = "black";
+    context.fill();
+  }
+}
